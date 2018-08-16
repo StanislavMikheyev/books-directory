@@ -37,3 +37,4 @@ You just need node.js and that is all
 style modular structure
 8) express-handlebars package is pretty limited, I think it is better to use different
 package or not to use template engine at all and use isomorphic React
+9) Add webpack, eslint, babel and other stuff like this

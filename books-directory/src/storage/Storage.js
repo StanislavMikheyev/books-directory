@@ -5,7 +5,7 @@
 const fs = require('fs');
 const path = require('path');
 const props = require('../../properties');
-const storageFile = path.join('books-directory', props.get('storagePath'));
+const storageFile = path.join(__dirname, '..', '..', props.get('storagePath'));
 
 class Storage {
     // Set default storage

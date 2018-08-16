@@ -21,16 +21,17 @@
 
 {{#each entries}}
     <div>
-        <h3>{{title}}</h3>
-        <h5>{{author}}</h5>
+        <hr>
+        <div>Title: <b>{{title}}</b></div>
+        <div>Author: <b>{{author}}</b></div>
         <button onclick="window.location.pathname='/edit/{{id}}'">Edit</button>
         <button onclick="$.post('/api/remove-book/{{id}}'); location.reload()">Remove</button>
-        <hr>
     </div>
 {{/each}}
 {{#unless entries}}
     <h2>No Entries</h2>
 {{/unless}}
+<hr>
 
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
