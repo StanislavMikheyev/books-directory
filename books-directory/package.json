@@ -1,0 +1,19 @@
+{
+  "name": "books-directory",
+  "version": "0.0.1",
+  "description": "Simple RESTful API for book storage with persistance in local json file",
+  "main": "app.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "Stanislav Mikheyev",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "latest",
+    "express": "^4.16.3",
+    "express-handlebars": "^3.0.0",
+    "express-session": "^1.15.6",
+    "mocha": "^5.2.0",
+    "properties-reader": "0.0.16"
+  }
+}

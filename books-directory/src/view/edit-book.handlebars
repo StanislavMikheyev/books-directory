@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>EDIT</title>
+</head>
+<body>
+
+{{#if new}}
+    <form action="/api/book" method="post">
+        Title: <input type="text" name="title">
+        Author: <input type="text" name="author">
+        <button type="submit">Save</button>
+    </form>
+{{else}}
+    {{#with book}}
+        <form action="/api/update-book/{{id}}" method="post">
+            Title: <input type="text" name="title" value="{{title}}">
+            Author: <input type="text" name="author" value="{{author}}">
+    {{/with}}
+        <button type="submit">Update</button>
+    </form>
+{{/if}}
+
+</body>
+</html>

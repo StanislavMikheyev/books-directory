@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>test</title>
+</head>
+<body>
+
+<button onclick="$.get('/util/save'); location.reload()">Save storage to file</button>
+<button onclick="$.get('/util/load'); setTimeout(function() {location.reload()}, 300)">Load storage from file</button>
+<br>
+<button onclick="location.reload()">Refresh</button>
+<button onclick="window.location.pathname = '/edit/new'">Add new entry</button>
+
+<h1>Book directory content:</h1>
+<form action="/" method="get">
+    <input id="filter" type="text" name="filter" value="{{filter}}">
+    <button type="submit">Filter</button>
+    <button type="button" onclick="$('#filter').val('');">Reset</button>
+</form>
+
+<div id="book-list-container"></div>
+{{#each entries}}
+    <div>
+        <h3>{{title}}</h3>
+        <h5>{{author}}</h5>
+        <button onclick="window.location.pathname='/edit/{{id}}'">Edit</button>
+        <button onclick="$.post('/api/remove-book/{{id}}'); location.reload()">Remove</button>
+        <hr>
+    </div>
+{{/each}}
+{{#unless entries}}
+    <h2>No Entries</h2>
+{{/unless}}
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+</body>
+</html>
