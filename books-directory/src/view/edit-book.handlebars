@@ -2,25 +2,43 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>EDIT</title>
+    <title>Books Directory | Edit "{{book.title}}"</title>
 </head>
 <body>
 
 {{#if new}}
-    <form action="/api/book" method="post">
+    <form id="edit-form" action="/api/book" method="post">
         Title: <input type="text" name="title">
         Author: <input type="text" name="author">
         <button type="submit">Save</button>
     </form>
 {{else}}
     {{#with book}}
-        <form action="/api/update-book/{{id}}" method="post">
+        <form id="edit-form" action="/api/update-book/{{id}}" method="post">
             Title: <input type="text" name="title" value="{{title}}">
             Author: <input type="text" name="author" value="{{author}}">
     {{/with}}
         <button type="submit">Update</button>
     </form>
 {{/if}}
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        // Amend form submission logic to perform redirect to home screen after submission
+        const form = $('#edit-form');
+        form.submit(function (event) {
+            event.preventDefault();
+            let data = form.serializeArray().reduce(function(obj, item) {
+                obj[item.name] = item.value;
+                return obj;
+            }, {});
+            $.post(form.attr('action'), data, function () {
+                window.location.pathname = '/';
+            });
+        });
+    });
+</script>
 
 </body>
 </html>
